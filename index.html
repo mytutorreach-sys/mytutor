@@ -416,17 +416,33 @@
     right: auto;
     left: 14px;
   }
+
+  .lang-toggle {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 50;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+  }
+
+  body.rtl .lang-toggle {
+    left: auto;
+    right: 16px;
+  }
 </style>
 </head>
 <body>
 
+  <button type="button" id="langToggle" class="price-badge lang-toggle">AR</button>
+
   <img src="logo.png" alt="Tutor mascot logo" class="logo">
-  <h1 data-ar="مرحباً، أنا معلمتك للغة الإنجليزية! 👋">Hi, I'm Your English Tutor! 👋</h1>
-  <p class="subtitle" data-ar="دروس إنجليزية ممتعة للأطفال">Fun English lessons for kids</p>
+  <h1 data-en="Hi, I'm Your English Tutor! 👋" data-ar="مرحباً، أنا معلمتك للغة الإنجليزية! 👋">Hi, I'm Your English Tutor! 👋</h1>
+  <p class="subtitle" data-en="Fun English lessons for kids" data-ar="دروس إنجليزية ممتعة للأطفال">Fun English lessons for kids</p>
   <div class="price-row">
-    <a class="price-badge" data-ar="تجربة مجانية" href="mailto:mytutor.reach@gmail.com?subject=Free%20Trial%20Lesson%20Request&body=Hi!%20I'd%20love%20to%20book%20a%20free%20trial%20lesson.%20Please%20let%20me%20know%20your%20available%20times.%20Thank%20you!">Free Trial</a>
-    <button type="button" class="price-badge" data-ar="4.21$ لكل درس" data-title="Paired Lesson (2 Students)" data-title-ar="درس ثنائي (طالبان)" data-desc="Your child learns alongside one other student in a small, focused 1-on-2 setting. It's a great way to build confidence through friendly interaction while still getting plenty of individual attention from the tutor." data-desc-ar="يتعلم طفلك مع طالب آخر في مجموعة صغيرة ومركزة (1 مقابل 2). هذه طريقة رائعة لبناء الثقة من خلال التفاعل الودي، مع حصوله على قسط وافر من الاهتمام الفردي من المعلمة.">$4.21 per lesson</button>
-    <button type="button" class="price-badge" data-ar="8.41$ لكل درس" data-title="Private 1-on-1 Lesson" data-title-ar="درس خصوصي فردي" data-desc="A fully personalized session with just your child and the tutor. Lessons are tailored entirely to their pace, interests, and learning goals — ideal for focused, faster progress." data-desc-ar="جلسة مخصصة بالكامل لطفلك مع المعلمة فقط. تُصمَّم الدروس بالكامل بما يتناسب مع وتيرة طفلك واهتماماته وأهدافه التعليمية - مثالية لتقدم أسرع وأكثر تركيزًا.">$8.41 per lesson</button>
+    <a class="price-badge" data-en="Free Trial" data-ar="تجربة مجانية" href="mailto:mytutor.reach@gmail.com?subject=Free%20Trial%20Lesson%20Request&body=Hi!%20I'd%20love%20to%20book%20a%20free%20trial%20lesson.%20Please%20let%20me%20know%20your%20available%20times.%20Thank%20you!">Free Trial</a>
+    <button type="button" class="price-badge" data-en="$4.21 per lesson" data-ar="4.21$ لكل درس" data-title="Paired Lesson (2 Students)" data-title-ar="درس ثنائي (طالبان)" data-desc="Your child learns alongside one other student in a small, focused 1-on-2 setting. It's a great way to build confidence through friendly interaction while still getting plenty of individual attention from the tutor." data-desc-ar="يتعلم طفلك مع طالب آخر في مجموعة صغيرة ومركزة (1 مقابل 2). هذه طريقة رائعة لبناء الثقة من خلال التفاعل الودي، مع حصوله على قسط وافر من الاهتمام الفردي من المعلمة.">$4.21 per lesson</button>
+    <button type="button" class="price-badge" data-en="$8.41 per lesson" data-ar="8.41$ لكل درس" data-title="Private 1-on-1 Lesson" data-title-ar="درس خصوصي فردي" data-desc="A fully personalized session with just your child and the tutor. Lessons are tailored entirely to their pace, interests, and learning goals — ideal for focused, faster progress." data-desc-ar="جلسة مخصصة بالكامل لطفلك مع المعلمة فقط. تُصمَّم الدروس بالكامل بما يتناسب مع وتيرة طفلك واهتماماته وأهدافه التعليمية - مثالية لتقدم أسرع وأكثر تركيزًا.">$8.41 per lesson</button>
   </div>
 
   <div class="gallery">
@@ -437,7 +453,7 @@
   </div>
 
   <div class="carousel-section">
-    <div class="carousel-title" data-ar="شاهد ما نقدمه">See What We Offer</div>
+    <div class="carousel-title" data-en="See What We Offer" data-ar="شاهد ما نقدمه">See What We Offer</div>
     <div class="carousel">
       <div class="carousel-arrow prev" id="carPrev">&#10094;</div>
       <div class="carousel-track" id="carTrack">
@@ -492,29 +508,29 @@
   </div>
 
   <div class="contact-section" id="contact">
-    <h2 data-ar="تواصل معنا">Get in Touch</h2>
-    <p data-ar="أرسل رسالة وسأرد عليك عبر البريد الإلكتروني 🩷">Send a message and I'll reply by email 🩷</p>
+    <h2 data-en="Get in Touch" data-ar="تواصل معنا">Get in Touch</h2>
+    <p data-en="Send a message and I'll reply by email 🩷" data-ar="أرسل رسالة وسأرد عليك عبر البريد الإلكتروني 🩷">Send a message and I'll reply by email 🩷</p>
     <form action="https://formsubmit.co/mytutor.reach@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New message from your tutoring website!">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none">
 
-      <label for="name" data-ar="اسمك">Your Name</label>
+      <label for="name" data-en="Your Name" data-ar="اسمك">Your Name</label>
       <input type="text" id="name" name="name" required>
 
-      <label for="email" data-ar="بريدك الإلكتروني">Your Email</label>
+      <label for="email" data-en="Your Email" data-ar="بريدك الإلكتروني">Your Email</label>
       <input type="email" id="email" name="email" required>
 
-      <label for="message" data-ar="الرسالة">Message</label>
-      <textarea id="message" name="message" placeholder="Tell me about your child's lessons..." data-ar-placeholder="أخبرني عن دروس طفلك..." required></textarea>
+      <label for="message" data-en="Message" data-ar="الرسالة">Message</label>
+      <textarea id="message" name="message" placeholder="Tell me about your child's lessons..." data-en-placeholder="Tell me about your child's lessons..." data-ar-placeholder="أخبرني عن دروس طفلك..." required></textarea>
 
-      <button type="submit" class="submit-btn" data-ar="إرسال الرسالة">Send Message</button>
+      <button type="submit" class="submit-btn" data-en="Send Message" data-ar="إرسال الرسالة">Send Message</button>
     </form>
-    <p class="form-note" data-ar="تُرسل الرسائل مباشرة إلى mytutor.reach@gmail.com">Messages are sent directly to mytutor.reach@gmail.com</p>
+    <p class="form-note" data-en="Messages are sent directly to mytutor.reach@gmail.com" data-ar="تُرسل الرسائل مباشرة إلى mytutor.reach@gmail.com">Messages are sent directly to mytutor.reach@gmail.com</p>
   </div>
 
-  <footer data-ar="صُنع بحب 🩷 لصغار متعلمي اللغة الإنجليزية">
+  <footer data-en="Made with 🩷 for young English learners" data-ar="صُنع بحب 🩷 لصغار متعلمي اللغة الإنجليزية">
     Made with 🩷 for young English learners
   </footer>
 
@@ -529,23 +545,33 @@
 
   <script>
     (function () {
-      const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-      const isArabic = browserLang.indexOf('ar') === 0;
+      const langToggle = document.getElementById('langToggle');
 
-      if (isArabic) {
-        document.documentElement.lang = 'ar';
-        document.documentElement.dir = 'rtl';
-        document.body.classList.add('rtl');
+      function applyLanguage(lang) {
+        const isAr = lang === 'ar';
 
-        document.querySelectorAll('[data-ar]').forEach(function (el) {
-          el.textContent = el.getAttribute('data-ar');
+        document.documentElement.lang = isAr ? 'ar' : 'en';
+        document.documentElement.dir = isAr ? 'rtl' : 'ltr';
+        document.body.classList.toggle('rtl', isAr);
+
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+          el.textContent = isAr ? el.getAttribute('data-ar') : el.getAttribute('data-en');
         });
-        document.querySelectorAll('[data-ar-placeholder]').forEach(function (el) {
-          el.placeholder = el.getAttribute('data-ar-placeholder');
+        document.querySelectorAll('[data-en-placeholder]').forEach(function (el) {
+          el.placeholder = isAr ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
         });
+
+        langToggle.textContent = isAr ? 'EN' : 'AR';
+        window.siteLang = isAr ? 'ar' : 'en';
       }
 
-      window.siteLang = isArabic ? 'ar' : 'en';
+      const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+      const initialLang = browserLang.indexOf('ar') === 0 ? 'ar' : 'en';
+      applyLanguage(initialLang);
+
+      langToggle.addEventListener('click', function () {
+        applyLanguage(window.siteLang === 'ar' ? 'en' : 'ar');
+      });
     })();
 
     (function () {
