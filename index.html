@@ -66,6 +66,9 @@
     appearance: none;
     -webkit-appearance: none;
     cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.4;
   }
 
   .price-badge:hover {
@@ -96,10 +99,15 @@
     position: relative;
   }
 
+  .gallery-item:nth-child(1) { background: #C9AEE0; }
+  .gallery-item:nth-child(2) { background: #C7E8C0; }
+  .gallery-item:nth-child(3) { background: #F6D671; }
+  .gallery-item:nth-child(4) { background: #F5AFC7; }
+
   .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
   }
 
@@ -395,6 +403,7 @@
   <h1>Hi, I'm Your English Tutor! 👋</h1>
   <p class="subtitle">Fun English lessons for kids</p>
   <div class="price-row">
+    <a class="price-badge" href="mailto:mytutor.reach@gmail.com?subject=Free%20Trial%20Lesson%20Request&body=Hi!%20I'd%20love%20to%20book%20a%20free%20trial%20lesson.%20Please%20let%20me%20know%20your%20available%20times.%20Thank%20you!">Free Trial</a>
     <button type="button" class="price-badge" data-title="Paired Lesson (2 Students)" data-desc="Your child learns alongside one other student in a small, focused 1-on-2 setting. It's a great way to build confidence through friendly interaction while still getting plenty of individual attention from the tutor.">$4.21 per lesson</button>
     <button type="button" class="price-badge" data-title="Private 1-on-1 Lesson" data-desc="A fully personalized session with just your child and the tutor. Lessons are tailored entirely to their pace, interests, and learning goals — ideal for focused, faster progress.">$8.41 per lesson</button>
   </div>
@@ -568,7 +577,8 @@
 
       badges.forEach(badge => {
         badge.addEventListener('click', () => {
-          modalTitle.textContent = badge.getAttribute('data-title');
+          const title = badge.getAttribute('data-title');
+          modalTitle.textContent = title;
           modalDesc.textContent = badge.getAttribute('data-desc');
           modal.classList.add('open');
         });
