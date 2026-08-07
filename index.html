@@ -422,8 +422,6 @@
     top: 16px;
     left: 16px;
     z-index: 50;
-    padding: 6px 16px;
-    font-size: 0.85rem;
   }
 
   body.rtl .lang-toggle {
@@ -434,7 +432,9 @@
 </head>
 <body>
 
-  <button type="button" id="langToggle" class="price-badge lang-toggle">AR</button>
+  <button type="button" id="langToggle" class="price-badge lang-toggle">
+    <span id="langToggleText">AR</span>
+  </button>
 
   <img src="logo.png" alt="Tutor mascot logo" class="logo">
   <h1 data-en="Hi, I'm Your English Tutor! 👋" data-ar="مرحباً، أنا معلمتك للغة الإنجليزية! 👋">Hi, I'm Your English Tutor! 👋</h1>
@@ -546,6 +546,7 @@
   <script>
     (function () {
       const langToggle = document.getElementById('langToggle');
+      const langToggleText = document.getElementById('langToggleText');
 
       function applyLanguage(lang) {
         const isAr = lang === 'ar';
@@ -561,7 +562,7 @@
           el.placeholder = isAr ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
         });
 
-        langToggle.textContent = isAr ? 'EN' : 'AR';
+        langToggleText.textContent = isAr ? 'EN' : 'AR';
         window.siteLang = isAr ? 'ar' : 'en';
       }
 
@@ -640,7 +641,7 @@
       const modalTitle = document.getElementById('planModalTitle');
       const modalDesc = document.getElementById('planModalDesc');
       const closeBtn = document.getElementById('planModalClose');
-      const badges = document.querySelectorAll('button.price-badge');
+      const badges = document.querySelectorAll('.price-row button.price-badge');
 
       badges.forEach(badge => {
         badge.addEventListener('click', () => {
