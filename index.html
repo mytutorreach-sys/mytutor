@@ -453,16 +453,11 @@
   :root{--d:1}
   body.rtl{--d:-1}
   body{-webkit-font-smoothing:antialiased;overflow-x:clip}
-  .rv{opacity:0;transform:translateX(calc(var(--dx,64px) * var(--d)));transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);transition-delay:var(--delay,0ms);will-change:transform,opacity}
-  .rv.rv-l{--dx:-64px}
-  .rv.rv-r{--dx:64px}
-  .rv.in{opacity:1;transform:none}
   .play-card,.contact-section{box-shadow:0 1px 2px rgba(122,59,69,.06),0 10px 30px rgba(122,59,69,.10)}
   .gallery-item{box-shadow:0 1px 2px rgba(122,59,69,.08),0 10px 26px rgba(122,59,69,.14);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease}
   .gallery-item:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(122,59,69,.08),0 16px 34px rgba(122,59,69,.20)}
   .social-btn{box-shadow:0 1px 2px rgba(122,59,69,.06),0 6px 16px rgba(122,59,69,.08)}
   a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
   .quiz-cta{text-align:center;margin:44px 0 0}
   .quiz-cta .btn-soft{padding:14px 26px;font-size:1.1rem;border-radius:18px;box-shadow:0 8px 20px rgba(244,185,66,.35)}
   .modal-box.wide{max-width:420px;max-height:88vh;overflow-y:auto}
@@ -472,6 +467,14 @@
   .site-footer{margin:70px -20px -80px;padding:40px 20px 34px;background:#FBE3E8;border-top:2px solid var(--pink);border-radius:32px 32px 0 0;box-shadow:0 -10px 30px rgba(122,59,69,.06)}
   .site-footer .socials{margin:0 auto 26px}
   .site-footer .footer-note{font-size:.9rem;color:var(--maroon);opacity:.85}
+  /* hero entrance: plays once when the page opens */
+  @keyframes heroIn{from{opacity:0;translate:calc(var(--dx) * var(--d)) 0}to{opacity:1;translate:0 0}}
+  h1{--dx:-70px;animation:heroIn .9s cubic-bezier(.22,1,.36,1) both}
+  .subtitle{--dx:70px;animation:heroIn .9s .12s cubic-bezier(.22,1,.36,1) both}
+  .price-row .price-badge{--dx:-70px;animation:heroIn .9s .26s cubic-bezier(.22,1,.36,1) both}
+  .price-row .price-badge:nth-child(2){--dx:70px;animation-delay:.38s}
+  .price-row .price-badge:nth-child(3){--dx:-70px;animation-delay:.5s}
+  @media (prefers-reduced-motion: reduce){h1,.subtitle,.price-row .price-badge{animation:none}}
 </style>
 </head>
 <body>
@@ -836,46 +839,52 @@
   </script>
 
 
+
+
   <script>
-    /* Things slide in from the sides as you scroll (mirrored in Arabic) */
+    /* Scroll-linked motion: each piece slides in from the side in step with your scrolling,
+       and slides back out if you scroll up. */
     (function () {
-      if ((window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) || !('IntersectionObserver' in window)) return;
-      var plan = [];
-      function add(sel, side, base, stagger) {
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var items = [];
+      function add(sel, side, dist, alternate) {
         document.querySelectorAll(sel).forEach(function (el, i) {
-          var s = stagger ? (i % 2 === 0 ? 'l' : 'r') : side;
-          plan.push([el, s, base + (stagger ? (i % 2) * 110 : 0)]);
+          items.push({ el: el, side: alternate ? (i % 2 === 0 ? -1 : 1) : side, dist: dist });
         });
       }
-      add('h1', 'l', 0);
-      add('.subtitle', 'r', 120);
-      document.querySelectorAll('.price-row .price-badge').forEach(function (el, i) { plan.push([el, i % 2 === 0 ? 'l' : 'r', 240 + i * 110]); });
-      add('.gallery-item', 'l', 0, true);
-      add('.carousel-title', 'l', 0);
-      add('.carousel', 'r', 120);
-      add('.quiz-cta', 'l', 0);
-      add('.contact-section', 'l', 0);
-      add('.social-btn', 'l', 0, true);
-      add('.footer-note', 'r', 0);
+      add('.gallery-item', 0, 110, true);
+      add('.carousel-title', -1, 110);
+      add('.carousel', 1, 130);
+      add('.contact-section', -1, 130);
+      add('.quiz-cta', 1, 110);
+      add('.site-footer .social-btn', 0, 90, true);
+      add('.footer-note', 1, 90);
+      var socials = document.querySelectorAll('.site-footer .social-btn');
+      items[items.length - 1].ref = socials[socials.length - 1];   /* the note moves in step with the last row of buttons */
 
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var vh = window.innerHeight, sy = window.pageYOffset;
+        var maxScroll = Math.max(0, document.documentElement.scrollHeight - vh);
+        var dir = document.documentElement.dir === 'rtl' ? -1 : 1;
+        var start = vh * 0.98;
+        items.forEach(function (it) {
+          var top = (it.ref || it.el).getBoundingClientRect().top;
+          var topAtBottom = top + sy - maxScroll;              /* where it sits when you reach the page end */
+          var end = Math.min(Math.max(vh * 0.62, topAtBottom + 2), start - 120);
+          var p = Math.max(0, Math.min(1, (start - top) / (start - end)));
+          var e = p * p * (3 - 2 * p);                         /* smooth start and finish */
+          it.el.style.opacity = e.toFixed(3);
+          it.el.style.translate = (it.side * dir * (1 - e) * it.dist).toFixed(1) + 'px 0';
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-
-      plan.forEach(function (p) {
-        var el = p[0];
-        el.classList.add('rv', 'rv-' + p[1]);
-        el.style.setProperty('--delay', p[2] + 'ms');
-        el.addEventListener('transitionend', function done(ev) {
-          if (ev.target !== el || ev.propertyName !== 'transform') return;
-          el.classList.remove('rv', 'rv-l', 'rv-r', 'in');
-          el.style.removeProperty('--delay');
-          el.removeEventListener('transitionend', done);
-        });
-        io.observe(el);
-      });
+      }
+      function schedule() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule);
+      window.addEventListener('load', schedule);
+      document.addEventListener('langchange', schedule);
+      update();
     })();
   </script>
 
