@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>English Lessons for Kids | Your Tutor</title>
+<title>Ra Tutor | Fun English Lessons for Kids</title>
+<meta name="description" content="Fun, friendly English lessons for kids with Ra Tutor. Book a free trial lesson today.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ra Tutor | Fun English Lessons for Kids">
+<meta property="og:description" content="Fun, friendly English lessons for kids. Book a free trial lesson today.">
+<meta property="og:image" content="https://mytutorreach-sys.github.io/mytutor/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&family=Nunito:wght@400;600;700&family=Cairo:wght@500;600;700&display=swap" rel="stylesheet">
@@ -296,27 +301,7 @@
     display: block;
   }
 
-  .carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--white);
-    border: 2px solid var(--pink-dark);
-    color: var(--maroon);
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 20;
-    user-select: none;
-  }
 
-  .carousel-arrow.prev { left: 0; }
-  .carousel-arrow.next { right: 0; }
 
   .carousel-dots {
     display: flex;
@@ -428,21 +413,81 @@
     left: auto;
     right: 16px;
   }
+
+  /* ---------- Learn & Play ---------- */
+  .play-section{max-width:480px;margin:0 auto 55px}
+  .play-card{background:var(--white);border:2px solid var(--pink);border-radius:24px;padding:24px 20px;margin-bottom:26px}
+  .play-card h2{font-family:'Baloo 2',sans-serif;font-size:1.4rem;margin-bottom:6px}
+  .play-card .hint{font-size:.9rem;color:var(--pink-dark);margin-bottom:14px}
+  .btn-soft{font-family:'Baloo 2',sans-serif;font-weight:700;background:var(--gold);color:var(--maroon);border:none;border-radius:14px;padding:10px 18px;font-size:1rem;cursor:pointer;margin:4px}
+  .btn-soft:hover{background:#e0a92f}
+  .btn-soft.alt{background:var(--pink);border:2px solid var(--pink-dark)}
+  .quiz-opt{display:block;width:100%;margin:8px 0;padding:11px 14px;border-radius:14px;border:2px solid var(--pink);background:var(--white);color:var(--maroon);font-family:inherit;font-size:1rem;cursor:pointer;text-align:left}
+  body.rtl .quiz-opt{text-align:right}
+  .quiz-opt:hover{border-color:var(--pink-dark);background:var(--cream)}
+  .quiz-opt.right{background:#C7E8C0;border-color:#7bbf72}
+  .quiz-opt.wrong{background:#F5C6C6;border-color:#d98c8c}
+  .quiz-q{font-size:1.2rem;font-weight:700;margin:6px 0 2px}
+  .quiz-hint,.quiz-step{font-size:.85rem;color:var(--pink-dark)}
+  .quiz-result{font-family:'Baloo 2',sans-serif;font-size:1.5rem;margin:8px 0;min-height:1.5em}
+  .quiz-name{width:100%;margin:8px 0}
+  .confetti{position:fixed;top:-30px;font-size:1.6rem;z-index:200;pointer-events:none;animation:fall 2.4s linear forwards}
+  @keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+  .socials.after-contact{margin:30px auto 0}
+
+  .lang-switch{position:fixed;top:16px;left:16px;z-index:50;display:inline-block}
+  body.rtl .lang-switch{left:auto;right:16px}
+  .lang-switch button{display:block;width:100%;background:var(--pink);color:var(--maroon);border:2px solid var(--pink-dark);border-radius:20px;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1rem;line-height:1.4;padding:8px 20px;cursor:pointer;text-align:center}
+  .lang-switch button:hover{background:var(--pink-dark)}
+  .lang-arrow{display:inline-block;transition:transform .2s ease}
+  .lang-switch.open .lang-arrow{transform:rotate(180deg)}
+  .lang-menu{display:none;flex-direction:column;gap:8px;margin-top:8px}
+  .lang-switch.open .lang-menu{display:flex}
+  .lang-switch.open .lang-menu button{animation:langDrop .4s cubic-bezier(.3,1.4,.5,1) both}
+  .lang-switch.open .lang-menu button:nth-child(2){animation-delay:.08s}
+  @keyframes langDrop{from{opacity:0;transform:translateY(-28px)}to{opacity:1;transform:translateY(0)}}
+  .carousel-slide img{-webkit-user-drag:none;user-select:none;pointer-events:none}
+  .carousel{cursor:grab}
+
+  /* ---------- Motion + polish ---------- */
+  :root{--d:1}
+  body.rtl{--d:-1}
+  body{-webkit-font-smoothing:antialiased;overflow-x:clip}
+  .rv{opacity:0;transform:translateX(calc(var(--dx,64px) * var(--d)));transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);transition-delay:var(--delay,0ms);will-change:transform,opacity}
+  .rv.rv-l{--dx:-64px}
+  .rv.rv-r{--dx:64px}
+  .rv.in{opacity:1;transform:none}
+  .play-card,.contact-section{box-shadow:0 1px 2px rgba(122,59,69,.06),0 10px 30px rgba(122,59,69,.10)}
+  .gallery-item{box-shadow:0 1px 2px rgba(122,59,69,.08),0 10px 26px rgba(122,59,69,.14);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease}
+  .gallery-item:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(122,59,69,.08),0 16px 34px rgba(122,59,69,.20)}
+  .social-btn{box-shadow:0 1px 2px rgba(122,59,69,.06),0 6px 16px rgba(122,59,69,.08)}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+  @media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+  .quiz-cta{text-align:center;margin:44px 0 0}
+  .quiz-cta .btn-soft{padding:14px 26px;font-size:1.1rem;border-radius:18px;box-shadow:0 8px 20px rgba(244,185,66,.35)}
+  .modal-box.wide{max-width:420px;max-height:88vh;overflow-y:auto}
+  .modal-box .hint{font-size:.9rem;color:var(--pink-dark);margin-bottom:14px}
+  .socials.in-card{margin:0 0 22px;max-width:none;gap:10px}
+  .socials.in-card .social-btn{padding:10px 12px;max-width:none}
+  .site-footer{margin:70px -20px -80px;padding:40px 20px 34px;background:#FBE3E8;border-top:2px solid var(--pink);border-radius:32px 32px 0 0;box-shadow:0 -10px 30px rgba(122,59,69,.06)}
+  .site-footer .socials{margin:0 auto 26px}
+  .site-footer .footer-note{font-size:.9rem;color:var(--maroon);opacity:.85}
 </style>
 </head>
 <body>
 
-  <button type="button" id="langToggle" class="price-badge lang-toggle">
-    <span id="langToggleText">AR</span>
-  </button>
+  <div class="lang-switch" id="langSwitch">
+    <button type="button" id="langToggle" aria-haspopup="true" aria-expanded="false"><span id="langToggleText">EN</span> <span class="lang-arrow">▾</span></button>
+    <div class="lang-menu" id="langMenu"></div>
+  </div>
 
   <img src="logo.png" alt="Tutor mascot logo" class="logo">
-  <h1 data-en="Hi, I'm Your English Tutor! 👋" data-ar="مرحباً، أنا معلمتك للغة الإنجليزية! 👋">Hi, I'm Your English Tutor! 👋</h1>
-  <p class="subtitle" data-en="Fun English lessons for kids" data-ar="دروس إنجليزية ممتعة للأطفال">Fun English lessons for kids</p>
+  <h1 data-en="Hi, I'm Ra Tutor! 👋" data-ar="مرحباً، أنا Ra Tutor! 👋" data-tr="Merhaba, ben Ra Tutor! 👋">Hi, I'm Ra Tutor! 👋</h1>
+  <p class="subtitle" data-en="Fun English lessons for kids" data-ar="دروس إنجليزية ممتعة للأطفال" data-tr="Çocuklar için eğlenceli İngilizce dersleri">Fun English lessons for kids</p>
   <div class="price-row">
-    <a class="price-badge" data-en="Free Trial" data-ar="تجربة مجانية" href="mailto:mytutor.reach@gmail.com?subject=Free%20Trial%20Lesson%20Request&body=Hi!%20I'd%20love%20to%20book%20a%20free%20trial%20lesson.%20Please%20let%20me%20know%20your%20available%20times.%20Thank%20you!">Free Trial</a>
-    <button type="button" class="price-badge" data-en="$4.21 per lesson" data-ar="4.21$ لكل درس" data-title="Paired Lesson (2 Students)" data-title-ar="درس ثنائي (طالبان)" data-desc="Your child learns alongside one other student in a small, focused 1-on-2 setting. It's a great way to build confidence through friendly interaction while still getting plenty of individual attention from the tutor." data-desc-ar="يتعلم طفلك مع طالب آخر في مجموعة صغيرة ومركزة (1 مقابل 2). هذه طريقة رائعة لبناء الثقة من خلال التفاعل الودي، مع حصوله على قسط وافر من الاهتمام الفردي من المعلمة.">$4.21 per lesson</button>
-    <button type="button" class="price-badge" data-en="$8.41 per lesson" data-ar="8.41$ لكل درس" data-title="Private 1-on-1 Lesson" data-title-ar="درس خصوصي فردي" data-desc="A fully personalized session with just your child and the tutor. Lessons are tailored entirely to their pace, interests, and learning goals — ideal for focused, faster progress." data-desc-ar="جلسة مخصصة بالكامل لطفلك مع المعلمة فقط. تُصمَّم الدروس بالكامل بما يتناسب مع وتيرة طفلك واهتماماته وأهدافه التعليمية - مثالية لتقدم أسرع وأكثر تركيزًا.">$8.41 per lesson</button>
+    <a class="price-badge" data-en="Free Trial" data-ar="تجربة مجانية" data-tr="Ücretsiz Deneme" href="mailto:mytutor.reach@gmail.com?subject=Free%20Trial%20Lesson%20Request&body=Hi%20Ra%20Tutor!%20I'd%20love%20to%20book%20a%20free%20trial%20lesson.%20Please%20let%20me%20know%20your%20available%20times.%20Thank%20you!">Free Trial</a>
+    <button type="button" class="price-badge" data-en="$4.21 per lesson" data-ar="4.21$ لكل درس" data-tr="Ders başına $4.21" data-title="Paired Lesson (2 Students)" data-title-tr="İkili Ders (2 Öğrenci)" data-desc-tr="Çocuğunuz, küçük ve odaklı bir 1'e 2 ortamında bir öğrenciyle birlikte öğrenir. Ra Tutor'dan bol bireysel ilgi görürken arkadaş canlısı etkileşimle özgüven kazanmanın harika bir yoludur." data-title-ar="درس ثنائي (طالبان)" data-desc="Your child learns alongside one other student in a small, focused 1-on-2 setting. It's a great way to build confidence through friendly interaction while still getting plenty of individual attention from Ra Tutor." data-desc-ar="يتعلم طفلك مع طالب آخر في مجموعة صغيرة ومركزة (1 مقابل 2). هذه طريقة رائعة لبناء الثقة من خلال التفاعل الودي، مع حصوله على قسط وافر من الاهتمام الفردي من Ra Tutor.">$4.21 per lesson</button>
+    <button type="button" class="price-badge" data-en="$8.41 per lesson" data-ar="8.41$ لكل درس" data-tr="Ders başına $8.41" data-title="Private 1-on-1 Lesson" data-title-tr="Özel Birebir Ders" data-desc-tr="Yalnızca çocuğunuz ve Ra Tutor ile tamamen kişiselleştirilmiş bir oturum. Dersler tamamen çocuğunuzun hızına, ilgi alanlarına ve öğrenme hedeflerine göre hazırlanır; odaklı ve daha hızlı ilerleme için idealdir." data-title-ar="درس خصوصي فردي" data-desc="A fully personalized session with just your child and Ra Tutor. Lessons are tailored entirely to their pace, interests, and learning goals — ideal for focused, faster progress." data-desc-ar="جلسة مخصصة بالكامل لطفلك مع Ra Tutor فقط. تُصمَّم الدروس بالكامل بما يتناسب مع وتيرة طفلك واهتماماته وأهدافه التعليمية - مثالية لتقدم أسرع وأكثر تركيزًا.">$8.41 per lesson</button>
   </div>
 
   <div class="gallery">
@@ -453,9 +498,8 @@
   </div>
 
   <div class="carousel-section">
-    <div class="carousel-title" data-en="See What We Offer" data-ar="شاهد ما نقدمه">See What We Offer</div>
+    <div class="carousel-title" data-en="See What We Offer" data-ar="شاهد ما نقدمه" data-tr="Neler Sunduğumuzu Görün">See What We Offer</div>
     <div class="carousel">
-      <div class="carousel-arrow prev" id="carPrev">&#10094;</div>
       <div class="carousel-track" id="carTrack">
         <div class="carousel-slide"><img src="carousel/post1.png" alt="Now open for bookings"></div>
         <div class="carousel-slide"><img src="carousel/post2.png" alt="Meet your teacher"></div>
@@ -464,12 +508,39 @@
         <div class="carousel-slide"><img src="carousel/post5.png" alt="Testimonial"></div>
         <div class="carousel-slide"><img src="carousel/post6.png" alt="Spots are open"></div>
       </div>
-      <div class="carousel-arrow next" id="carNext">&#10095;</div>
     </div>
     <div class="carousel-dots" id="carDots"></div>
   </div>
 
-  <div class="socials">
+  
+  <div class="contact-section" id="contact">
+    <h2 data-en="Get in Touch" data-ar="تواصل معنا" data-tr="İletişime Geçin">Get in Touch</h2>
+    <p data-en="Send a message and I'll reply by email 🩷" data-ar="أرسل رسالة وسأرد عليك عبر البريد الإلكتروني 🩷" data-tr="Bir mesaj gönderin, e-postayla yanıtlayayım 🩷">Send a message and I'll reply by email 🩷</p>
+  <form action="https://formsubmit.co/mytutor.reach@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New message from your tutoring website!">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
+
+      <label for="name" data-en="Your Name" data-ar="اسمك" data-tr="Adınız">Your Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email" data-en="Your Email" data-ar="بريدك الإلكتروني" data-tr="E-posta Adresiniz">Your Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message" data-en="Message" data-ar="الرسالة" data-tr="Mesaj">Message</label>
+      <textarea id="message" name="message" placeholder="Tell me about your child's lessons..." data-en-placeholder="Tell me about your child's lessons..." data-ar-placeholder="أخبرني عن دروس طفلك..." data-tr-placeholder="Çocuğunuzun dersleri hakkında bana bilgi verin..." required></textarea>
+
+      <button type="submit" class="submit-btn" data-en="Send Message" data-ar="إرسال الرسالة" data-tr="Mesaj Gönder">Send Message</button>
+    </form>
+  </div>
+
+  <div class="quiz-cta">
+    <button type="button" class="btn-soft" id="quizOpen" data-en="📝 What's Your Child's Level?" data-ar="📝 ما مستوى طفلك؟" data-tr="📝 Çocuğunuzun Seviyesi Nedir?">📝 What's Your Child's Level?</button>
+  </div>
+
+  <footer class="site-footer">
+    <div class="socials">
     <a class="social-btn" href="https://www.instagram.com/myttutor?igsh=MXVmYmpvNGdxZ21rcA==" target="_blank" rel="noopener">
       <div class="icon-badge instagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="#7A3B45" stroke-width="1.8">
@@ -506,33 +577,18 @@
       <span>Gmail</span>
     </a>
   </div>
-
-  <div class="contact-section" id="contact">
-    <h2 data-en="Get in Touch" data-ar="تواصل معنا">Get in Touch</h2>
-    <p data-en="Send a message and I'll reply by email 🩷" data-ar="أرسل رسالة وسأرد عليك عبر البريد الإلكتروني 🩷">Send a message and I'll reply by email 🩷</p>
-    <form action="https://formsubmit.co/mytutor.reach@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New message from your tutoring website!">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="_honey" style="display:none">
-
-      <label for="name" data-en="Your Name" data-ar="اسمك">Your Name</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email" data-en="Your Email" data-ar="بريدك الإلكتروني">Your Email</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="message" data-en="Message" data-ar="الرسالة">Message</label>
-      <textarea id="message" name="message" placeholder="Tell me about your child's lessons..." data-en-placeholder="Tell me about your child's lessons..." data-ar-placeholder="أخبرني عن دروس طفلك..." required></textarea>
-
-      <button type="submit" class="submit-btn" data-en="Send Message" data-ar="إرسال الرسالة">Send Message</button>
-    </form>
-    <p class="form-note" data-en="Messages are sent directly to mytutor.reach@gmail.com" data-ar="تُرسل الرسائل مباشرة إلى mytutor.reach@gmail.com">Messages are sent directly to mytutor.reach@gmail.com</p>
-  </div>
-
-  <footer data-en="Made with 🩷 for young English learners" data-ar="صُنع بحب 🩷 لصغار متعلمي اللغة الإنجليزية">
-    Made with 🩷 for young English learners
+    <p class="footer-note" data-en="Made with 🩷 for young English learners" data-ar="صُنع بحب 🩷 لصغار متعلمي اللغة الإنجليزية" data-tr="Genç İngilizce öğrencileri için 🩷 ile yapıldı">Made with 🩷 for young English learners</p>
   </footer>
+
+  <!-- Level quiz pop-up -->
+  <div class="modal-overlay" id="quizModal">
+    <div class="modal-box wide">
+      <button class="modal-close" id="quizClose" aria-label="Close">&times;</button>
+      <h3 data-en="📝 What's Your Child's Level?" data-ar="📝 ما مستوى طفلك؟" data-tr="📝 Çocuğunuzun Seviyesi Nedir?">📝 What's Your Child's Level?</h3>
+      <p class="hint" data-en="6 quick questions. Let your child try!" data-ar="6 أسئلة سريعة. دع طفلك يجرب!" data-tr="6 hızlı soru. Çocuğunuz denesin!">6 quick questions. Let your child try!</p>
+      <div id="qBody"></div>
+    </div>
+  </div>
 
   <!-- Plan info modal -->
   <div class="modal-overlay" id="planModal">
@@ -545,42 +601,74 @@
 
   <script>
     (function () {
-      const langToggle = document.getElementById('langToggle');
-      const langToggleText = document.getElementById('langToggleText');
+      const sw = document.getElementById('langSwitch');
+      const btn = document.getElementById('langToggle');
+      const btnText = document.getElementById('langToggleText');
+      const menu = document.getElementById('langMenu');
+      const NAMES = { en: 'English', tr: 'Türkçe', ar: 'العربية' };
 
-      function applyLanguage(lang) {
-        const isAr = lang === 'ar';
-
-        document.documentElement.lang = isAr ? 'ar' : 'en';
-        document.documentElement.dir = isAr ? 'rtl' : 'ltr';
-        document.body.classList.toggle('rtl', isAr);
-
-        document.querySelectorAll('[data-en]').forEach(function (el) {
-          el.textContent = isAr ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+      function buildMenu() {
+        menu.innerHTML = '';
+        ['en', 'tr', 'ar'].filter(function (l) { return l !== window.siteLang; }).forEach(function (l) {
+          const b = document.createElement('button');
+          b.type = 'button'; b.textContent = l.toUpperCase(); b.setAttribute('aria-label', NAMES[l]);
+          b.addEventListener('click', function () {
+            applyLanguage(l);
+            try { localStorage.setItem('siteLang', l); } catch (e) {}
+            sw.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+          });
+          menu.appendChild(b);
         });
-        document.querySelectorAll('[data-en-placeholder]').forEach(function (el) {
-          el.placeholder = isAr ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder');
-        });
-
-        langToggleText.textContent = isAr ? 'EN' : 'AR';
-        window.siteLang = isAr ? 'ar' : 'en';
       }
 
-      const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-      const initialLang = browserLang.indexOf('ar') === 0 ? 'ar' : 'en';
-      applyLanguage(initialLang);
+      function applyLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        document.body.classList.toggle('rtl', lang === 'ar');
 
-      langToggle.addEventListener('click', function () {
-        applyLanguage(window.siteLang === 'ar' ? 'en' : 'ar');
+        document.querySelectorAll('[data-en]').forEach(function (el) {
+          el.textContent = el.getAttribute('data-' + lang) || el.getAttribute('data-en');
+        });
+        document.querySelectorAll('[data-en-placeholder]').forEach(function (el) {
+          el.placeholder = el.getAttribute('data-' + lang + '-placeholder') || el.getAttribute('data-en-placeholder');
+        });
+
+        /* Translated pictures: for photo.png the site looks for photo-ar.png / photo-tr.png
+           in the same folder, and keeps the English picture if that file does not exist. */
+        document.querySelectorAll('.gallery img, .carousel-slide img').forEach(function (img) {
+          if (!img.getAttribute('data-en-src')) img.setAttribute('data-en-src', img.getAttribute('src'));
+          const en = img.getAttribute('data-en-src');
+          img.onerror = null;
+          if (lang === 'en' || !/\.png$/i.test(en)) { img.src = en; return; }
+          img.onerror = function () { img.onerror = null; img.src = en; };
+          img.src = en.replace(/\.png$/i, '-' + lang + '.png');
+        });
+
+        btnText.textContent = lang.toUpperCase();
+        window.siteLang = lang;
+        buildMenu();
+        document.dispatchEvent(new Event('langchange'));
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const open = sw.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
+      document.addEventListener('click', function () { sw.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
+
+      let saved = null;
+      try { saved = localStorage.getItem('siteLang'); } catch (e) {}
+      const bl = (navigator.language || '').toLowerCase();
+      const guess = bl.indexOf('ar') === 0 ? 'ar' : bl.indexOf('tr') === 0 ? 'tr' : 'en';
+      applyLanguage(NAMES[saved] ? saved : guess);
     })();
 
     (function () {
       const track = document.getElementById('carTrack');
       const slides = Array.from(track.children);
       const dotsWrap = document.getElementById('carDots');
-      const prevBtn = document.getElementById('carPrev');
-      const nextBtn = document.getElementById('carNext');
+      const carousel = track.parentElement;
       let current = 0;
 
       slides.forEach((_, i) => {
@@ -619,19 +707,27 @@
         render();
       }
 
-      prevBtn.addEventListener('click', () => goTo(current - 1));
-      nextBtn.addEventListener('click', () => goTo(current + 1));
-      slides.forEach((slide, i) => slide.addEventListener('click', () => goTo(i)));
-
-      // touch swipe support
-      let startX = 0;
-      const carousel = track.parentElement;
-      carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-      carousel.addEventListener('touchend', e => {
-        const dx = e.changedTouches[0].clientX - startX;
+      /* swipe or drag left / right, like a TikTok photo carousel */
+      let startX = 0, dragging = false, moved = false;
+      carousel.addEventListener('pointerdown', e => { startX = e.clientX; dragging = true; moved = false; });
+      carousel.addEventListener('pointermove', e => { if (dragging && Math.abs(e.clientX - startX) > 10) moved = true; });
+      window.addEventListener('pointerup', e => {
+        if (!dragging) return;
+        dragging = false;
+        const dx = e.clientX - startX;
         if (dx > 40) goTo(current - 1);
         else if (dx < -40) goTo(current + 1);
-      }, { passive: true });
+      });
+      window.addEventListener('pointercancel', () => { dragging = false; });
+      carousel.addEventListener('dragstart', e => e.preventDefault());
+
+      /* tapping a side picture brings it to the middle */
+      carousel.addEventListener('click', e => {
+        if (moved) return;
+        const r = carousel.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width / 2);
+        if (Math.abs(x) > 60) goTo(current + (x > 0 ? 1 : -1));
+      });
 
       render();
     })();
@@ -645,9 +741,9 @@
 
       badges.forEach(badge => {
         badge.addEventListener('click', () => {
-          const isAr = window.siteLang === 'ar';
-          const title = isAr ? badge.getAttribute('data-title-ar') : badge.getAttribute('data-title');
-          const desc = isAr ? badge.getAttribute('data-desc-ar') : badge.getAttribute('data-desc');
+          const lg = window.siteLang;
+          const title = badge.getAttribute('data-title-' + lg) || badge.getAttribute('data-title');
+          const desc = badge.getAttribute('data-desc-' + lg) || badge.getAttribute('data-desc');
           modalTitle.textContent = title;
           modalDesc.textContent = desc;
           modal.classList.add('open');
@@ -661,6 +757,124 @@
       closeBtn.addEventListener('click', closeModal);
       modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
+      });
+    })();
+  </script>
+
+
+  <script>
+    (function () {
+      var $ = function (id) { return document.getElementById(id); };
+      var L = function () { return window.siteLang || 'en'; };
+      var T = function (en, a, t) { var l = L(); return l === 'ar' ? a : (l === 'tr' ? t : en); };
+      function confetti() {
+        var e = ['🎉','⭐','🌸','✨','💖'];
+        for (var i = 0; i < 24; i++) {
+          var s = document.createElement('span');
+          s.className = 'confetti'; s.textContent = e[i % 5];
+          s.style.left = Math.random() * 100 + 'vw';
+          s.style.animationDelay = Math.random() * 0.8 + 's';
+          document.body.appendChild(s);
+          setTimeout(function (x) { x.remove(); }, 3500, s);
+        }
+      }
+      var Q = [
+        { q: "What is this? 🍎", a: "ما هذا؟ 🍎", t: "Bu nedir? 🍎", o: ["apple","book","car"], k: 0 },
+        { q: "I ___ a student.", a: "أنا ___ تلميذ/ة.", t: "Ben bir öğrenciyim.", o: ["am","is","are"], k: 0 },
+        { q: "She ___ two cats.", a: "هي ___ قطتان.", t: "Onun iki kedisi var.", o: ["have","has","haves"], k: 1 },
+        { q: "Birds can ___.", a: "الطيور تستطيع أن ___.", t: "Kuşlar uçabilir.", o: ["fly","flies","flying"], k: 0 },
+        { q: "He ___ to school every day.", a: "هو ___ إلى المدرسة كل يوم.", t: "O her gün okula gider.", o: ["go","goes","going"], k: 1 },
+        { q: "Choose the correct sentence.", a: "اختر الجملة الصحيحة.", t: "Doğru cümleyi seç.", o: ["I have a red big ball.","I have a big red ball.","I have big a red ball."], k: 1 }
+      ];
+      var LV = [["Starter 🌱","مبتدئ 🌱","Başlangıç 🌱"],["Explorer 🧭","مستكشف 🧭","Kâşif 🧭"],["Star ⭐","نجم ⭐","Yıldız ⭐"]];
+      var qi = 0, sc = 0;
+      function renderQ() {
+        var B = $('qBody');
+        if (qi >= Q.length) {
+          var lv = sc <= 2 ? 0 : sc <= 4 ? 1 : 2, lvl = LV[lv][0];
+          B.innerHTML = '<div class="quiz-step"></div><div class="quiz-result"></div><input type="text" class="quiz-name" id="qName"><button type="button" class="btn-soft" id="qSend"></button><button type="button" class="btn-soft alt" id="qRe"></button>';
+          B.children[0].textContent = T('Score: ', 'النتيجة: ', 'Puan: ') + sc + ' / ' + Q.length;
+          B.children[1].textContent = T('Level: ', 'المستوى: ', 'Seviye: ') + T(LV[lv][0], LV[lv][1], LV[lv][2]);
+          $('qName').placeholder = T("Child's name (optional)", 'اسم الطفل (اختياري)', 'Çocuğun adı (isteğe bağlı)');
+          $('qSend').textContent = T('📩 Send result & book a free trial', '📩 أرسل النتيجة واحجز تجربة مجانية', '📩 Sonucu gönder ve ücretsiz deneme iste');
+          $('qRe').textContent = T('Try again', 'حاول مرة أخرى', 'Tekrar dene');
+          $('qRe').onclick = function () { qi = 0; sc = 0; renderQ(); };
+          $('qSend').onclick = function () {
+            var n = $('qName').value || '-';
+            location.href = 'mailto:mytutor.reach@gmail.com?subject=' + encodeURIComponent('English level result: ' + lvl) +
+              '&body=' + encodeURIComponent('Child name: ' + n + '\nScore: ' + sc + ' / ' + Q.length + '\nLevel: ' + lvl + '\nI would like to book a free trial lesson.');
+          };
+          return;
+        }
+        var q = Q[qi];
+        B.innerHTML = '<div class="quiz-step"></div><div class="quiz-q"></div><div class="quiz-hint"></div>';
+        B.children[0].textContent = (qi + 1) + ' / ' + Q.length;
+        B.children[1].textContent = q.q;
+        B.children[2].textContent = T('', q.a, q.t);
+        q.o.forEach(function (o, i) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'quiz-opt'; b.textContent = o;
+          b.onclick = function () {
+            var all = B.querySelectorAll('.quiz-opt');
+            Array.prototype.forEach.call(all, function (x) { x.disabled = true; });
+            b.classList.add(i === q.k ? 'right' : 'wrong');
+            if (i === q.k) sc++; else all[q.k].classList.add('right');
+            setTimeout(function () { qi++; renderQ(); if (qi >= Q.length && sc >= 5) confetti(); }, 900);
+          };
+          B.appendChild(b);
+        });
+      }
+      var modal = $('quizModal');
+      function closeQuiz() { modal.classList.remove('open'); }
+      $('quizOpen').onclick = function () { qi = 0; sc = 0; renderQ(); modal.classList.add('open'); };
+      $('quizClose').onclick = closeQuiz;
+      modal.addEventListener('click', function (e) { if (e.target === modal) closeQuiz(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeQuiz(); });
+      document.addEventListener('langchange', renderQ);
+      renderQ();
+    })();
+  </script>
+
+
+  <script>
+    /* Things slide in from the sides as you scroll (mirrored in Arabic) */
+    (function () {
+      if ((window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) || !('IntersectionObserver' in window)) return;
+      var plan = [];
+      function add(sel, side, base, stagger) {
+        document.querySelectorAll(sel).forEach(function (el, i) {
+          var s = stagger ? (i % 2 === 0 ? 'l' : 'r') : side;
+          plan.push([el, s, base + (stagger ? (i % 2) * 110 : 0)]);
+        });
+      }
+      add('h1', 'l', 0);
+      add('.subtitle', 'r', 120);
+      document.querySelectorAll('.price-row .price-badge').forEach(function (el, i) { plan.push([el, i % 2 === 0 ? 'l' : 'r', 240 + i * 110]); });
+      add('.gallery-item', 'l', 0, true);
+      add('.carousel-title', 'l', 0);
+      add('.carousel', 'r', 120);
+      add('.quiz-cta', 'l', 0);
+      add('.contact-section', 'l', 0);
+      add('.social-btn', 'l', 0, true);
+      add('.footer-note', 'r', 0);
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+      plan.forEach(function (p) {
+        var el = p[0];
+        el.classList.add('rv', 'rv-' + p[1]);
+        el.style.setProperty('--delay', p[2] + 'ms');
+        el.addEventListener('transitionend', function done(ev) {
+          if (ev.target !== el || ev.propertyName !== 'transform') return;
+          el.classList.remove('rv', 'rv-l', 'rv-r', 'in');
+          el.style.removeProperty('--delay');
+          el.removeEventListener('transitionend', done);
+        });
+        io.observe(el);
       });
     })();
   </script>
